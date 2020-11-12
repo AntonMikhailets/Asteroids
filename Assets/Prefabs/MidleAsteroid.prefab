@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1820615820251033956}
   - component: {fileID: 2354847949156397044}
   - component: {fileID: 971043166286711175}
-  - component: {fileID: 3239888971606648630}
+  - component: {fileID: 6216133387766131456}
   m_Layer: 0
   m_Name: MidleAsteroid
   m_TagString: Asteroid
@@ -288,7 +288,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3239888971606648630
+--- !u!114 &6216133387766131456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,17 +297,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8584047205870459728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb3b959b53bd52f4d97cfda04a6958ff, type: 3}
+  m_Script: {fileID: 11500000, guid: afc59d0dfbfa12247842257c5da3a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   screenTop: 6
   screenBottom: -6
   screenLeft: -10
   screenRight: 10
+  scorePoints: 50
   maxThrust: 40
   minThrust: 20
   maxTorque: 10
   minTorque: 5
-  scorePoints: 50
-  midleAstreroid: {fileID: 1587078799810479543, guid: c322ef1a9d416d34e91da63608f54781,
+  separationAfterBreak: 1
+  separationAstreroid: {fileID: 1587078799810479543, guid: c322ef1a9d416d34e91da63608f54781,
     type: 3}

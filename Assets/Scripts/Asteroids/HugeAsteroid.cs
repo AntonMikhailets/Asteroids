@@ -8,10 +8,13 @@ public class HugeAsteroid : SmallAsteroid
 {
 	[SerializeField] private GameObject midleAstreroid;
 
-   	public override void SpawnAsteroids()
+   	public override void Break()
    	{	
-   		Instantiate (midleAstreroid, transform.position, transform.rotation);
-   		Instantiate (midleAstreroid, transform.position, transform.rotation);
+   		for(int i =0; i < 2; i++)
+   		{
+   			Instantiate (midleAstreroid, transform.position, transform.rotation);
+   		}
+   		
    		Destroy(gameObject);
    	}
  }

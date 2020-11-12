@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
 public class SmallAsteroid : ScreenBorders
 {
+	public int scorePoints;
+
 	public delegate void SetScorePoints(int points);
     public static event SetScorePoints AsteroidBroke;
 
@@ -13,8 +15,8 @@ public class SmallAsteroid : ScreenBorders
 	[SerializeField] private float minThrust;
 	[SerializeField] private float maxTorque;
 	[SerializeField] private float minTorque;
-
-	[SerializeField] private int scorePoints;  
+	[SerializeField] private bool separationAfterBreak;
+	[SerializeField] private GameObject separationAstreroid;  
 
 	private Rigidbody2D rigidbody;
 
@@ -41,14 +43,17 @@ public class SmallAsteroid : ScreenBorders
    		}
    	}
 
-   	public void Break()
+   	public virtual void Break()
    	{
    		AsteroidBroke(scorePoints);
-   		SpawnAsteroids();
-   	}
 
-   	public virtual void SpawnAsteroids()
-   	{
+   		if(separationAfterBreak)
+   		{
+   			for(int i =0; i < 2; i++)
+   			{
+   				Instantiate (separationAstreroid, transform.position, transform.rotation);
+   			}
+   		}
    		Destroy(gameObject);
    	}
  }

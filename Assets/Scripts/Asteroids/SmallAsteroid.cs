@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
-public class SmallAsteroid : ScreenBorders
+public class SmallAsteroid : FlyingObject
 {
 	public int scorePoints;
 
@@ -23,7 +23,11 @@ public class SmallAsteroid : ScreenBorders
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody2D>();
+		SetBordersAndPrivateObjects();
 		SetDirection();
+
+		GameObject canvas = GameObject.Find("/Canvas");
+		gameObject.transform.SetParent(canvas.transform);
 	}
 
 	private void SetDirection()

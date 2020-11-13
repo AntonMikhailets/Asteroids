@@ -32,7 +32,9 @@ public class Menu : MonoBehaviour
 
     private void GameOver()
     {
-    	GameUI.active = false;
+        if(GameUI)
+    	   GameUI.active = false;
+        if(GameOverUI)
 		GameOverUI.active = true;
     }
 }

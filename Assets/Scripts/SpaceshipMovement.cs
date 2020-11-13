@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class SpaceshipMovement : ScreenBorders
+public class SpaceshipMovement : FlyingObject
 {
   
 	[SerializeField] private float thrust = 1.0f;
@@ -12,23 +12,35 @@ public class SpaceshipMovement : ScreenBorders
 	private float _thrustInput;
 	private float _torqueInput;
 
-  private Rigidbody2D rigidbody;
+  /*private Rigidbody2D rigidbody;
 
   private void Start()
   {
       rigidbody = gameObject.GetComponent<Rigidbody2D>();
-  }
+  }*/
 
   private void Update()
   {
   		BorderCheck();
-  		_thrustInput = Input.GetAxis("Vertical");
+  		_thrustInput = Input.GetAxis("Up");
   		_torqueInput = Input.GetAxis("Horizontal");
-  }
+
+      if(Input.GetButtonDown("Teleportation"))
+        {
+          Teleportation();
+        }
+    }
+
+    private void Teleportation()
+    {
+      float x = Screen.width/2f;
+      float y = Screen.height/2f;
+      gameObject.transform.localPosition = new Vector2(Random.Range(-x,x), Random.Range(-y,y));
+    }
 
   private void FixedUpdate()
   {
-  		rigidbody.AddRelativeForce(Vector2.up * _thrustInput);
-      rigidbody.AddTorque(-_torqueInput * torque);
+  		GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * _thrustInput * thrust);
+      GetComponent<Rigidbody2D>().AddTorque(-_torqueInput * torque);
   }   
 }

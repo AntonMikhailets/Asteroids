@@ -25,7 +25,6 @@ public class HealthUI : MonoBehaviour
     	}else{
     		if(health > newHealth)
     		{
-                Debug.Log("Fuck");
     			//удаление иконки при получение урона
     			for(int i = health; i > newHealth; i--)
     			{

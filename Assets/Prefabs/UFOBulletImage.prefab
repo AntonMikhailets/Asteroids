@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 3498397885463767347}
   - component: {fileID: -2217241802963545995}
   - component: {fileID: 2797653979836128892}
-  - component: {fileID: 7317342149491351435}
   - component: {fileID: 4252299365181773279}
+  - component: {fileID: 5134499810035127346}
   m_Layer: 5
-  m_Name: BulletImage
+  m_Name: UFOBulletImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,19 +115,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4.01
---- !u!114 &7317342149491351435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5140253623477697685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5170d050eb6d7f74f9a25b1ccc96a378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  liftime: 0.8
 --- !u!82 &4252299365181773279
 AudioSource:
   m_ObjectHideFlags: 0
@@ -224,3 +211,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5134499810035127346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140253623477697685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712e4925278a7e4499e251e3b7c73f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liftime: 2

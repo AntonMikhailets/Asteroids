@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Spaceship : MonoBehaviour, ISpaceship
 {
     [SerializeField] private int health = 3;
-    [SerializeField] private GameObject DeathParticle;
+    [SerializeField] private GameObject DeathParticle  = default;
 
     public delegate void SpaceshipHealth(int health);
     public static event SpaceshipHealth SetHealth;

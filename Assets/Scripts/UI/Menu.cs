@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-	[SerializeField] private GameObject StartUI;
-    [SerializeField] private GameObject GameUI;
-    [SerializeField] private GameObject GameOverUI;
+	[SerializeField] private GameObject StartUI = default;
+    [SerializeField] private GameObject GameUI = default;
+    [SerializeField] private GameObject GameOverUI = default;
     
     private void Start()
     {
     	Pause();
-    	GameUI.active = false;
-		GameOverUI.active = false;
-    	StartUI.active = true;
+    	GameUI.SetActive(false);
+		GameOverUI.SetActive(false);
+    	StartUI.SetActive(true);
         Spaceship.SetDeath += GameOver;
     }
 
@@ -25,16 +25,17 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
-    	GameUI.active = true;
-    	if(StartUI.active) StartUI.active = false;
+    	GameUI.SetActive(true);
+    	if(StartUI.activeSelf ) 
+            StartUI.SetActive(false);
     	Time.timeScale = 1.0f;
     }
 
     private void GameOver()
     {
         if(GameUI)
-    	   GameUI.active = false;
+    	   GameUI.SetActive(false);
         if(GameOverUI)
-		GameOverUI.active = true;
+		   GameOverUI.SetActive(true);
     }
 }

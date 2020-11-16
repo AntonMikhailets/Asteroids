@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    [SerializeField] private Image healthImage;
+    [SerializeField] private Image healthImage = default;
     [SerializeField] private int health;
-    [SerializeField] private List<Image> healthImages;
+    [SerializeField] private List<Image> healthImages = default;
 
     public void ShowHealth(int newHealth)
     {

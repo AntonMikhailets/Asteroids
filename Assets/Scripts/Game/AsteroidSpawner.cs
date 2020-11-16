@@ -1,17 +1,19 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
 	public GameObject GameUI;
-    public GameObject[] AsteroidsScene;
-    [SerializeField] private GameObject[] Asteroids;
+    [SerializeField] private GameObject[] Asteroids  = default;
     [SerializeField] private int asteroidsValue;
+    [SerializeField] private List<GameObject> _asteroidsInScene = default;
 
     private void Start()
     {
     	SpawnAsteroids(asteroidsValue);
-    	StartCoroutine(SearchAsteroidsInScene());
+        Asteroid.Created += AddAsteroidInList;
+        Asteroid.Crashed += RemoveAsteroidFromList;  
     }
 
     public void SpawnAsteroids(int quantity)
@@ -39,16 +41,18 @@ public class AsteroidSpawner : MonoBehaviour
       	newAsteroid.transform.localPosition = new Vector2(x,y);
     }
 
-    private IEnumerator SearchAsteroidsInScene()
-	{
-		yield return new WaitForSeconds(1);
-    	AsteroidsScene = GameObject.FindGameObjectsWithTag("Asteroid");
+    private void AddAsteroidInList(GameObject newAsteroid)
+    {
+       _asteroidsInScene.Add(newAsteroid); 
+    }
 
-    	if(AsteroidsScene.Length == 0)
-    	{
-    		yield return new WaitForSeconds(2);
-    		SpawnAsteroids(++asteroidsValue);
-    	}
-    	StartCoroutine(SearchAsteroidsInScene());
+    private void RemoveAsteroidFromList(GameObject newAsteroid)
+    {
+       _asteroidsInScene.Remove(newAsteroid); 
+
+       if(_asteroidsInScene.Count == 0)
+       {
+            SpawnAsteroids(++asteroidsValue);
+       }
     }
 }

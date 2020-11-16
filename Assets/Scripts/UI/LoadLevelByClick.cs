@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class LoadLevelByClick : MonoBehaviour
 {
-	[SerializeField] private int _level;
+	[SerializeField] private int _level = 0;
 
     public void LoadLevel()
     {
-        Application.LoadLevel(_level);
+         SceneManager.LoadScene(_level);
     }
 }

@@ -2,7 +2,7 @@
 
 public class UFOBullet : MonoBehaviour
 {
-    [SerializeField] private float liftime;
+    [SerializeField] private float liftime = 0;
 
     private void Start()
     {

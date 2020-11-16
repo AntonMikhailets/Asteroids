@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UFOSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] UFOs;
-    [SerializeField] private GameObject parent;
+    [SerializeField] private GameObject[] UFOs = default;
+    [SerializeField] private GameObject parent = default;
 
     private void Start()
     {

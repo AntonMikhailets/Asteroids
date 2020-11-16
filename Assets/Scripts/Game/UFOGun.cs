@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UFOGun : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;
-	[SerializeField] private float bulletForce;
-	[SerializeField] bool aimed;
+    [SerializeField] GameObject bullet = default;
+	[SerializeField] private float bulletForce = 0;
+	[SerializeField] bool aimed = false;
 
 	private Vector2 direction;
 

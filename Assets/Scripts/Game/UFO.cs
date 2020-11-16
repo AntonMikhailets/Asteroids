@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class UFO : FlyingObject, ISpaceship
 {
 	[SerializeField] private float horizontalThrust;
-	[SerializeField] private float verticalThrust;
-	[SerializeField] private UFOGun UFOGun;
-	[SerializeField] private GameObject deathParticle;
+	[SerializeField] private float verticalThrust = 0;
+	[SerializeField] private UFOGun UFOGun = default;
+	[SerializeField] private GameObject deathParticle = default;
 
 	private Vector2 _thrust;
 	private Rigidbody2D _rigidbody;
@@ -28,7 +28,7 @@ public class UFO : FlyingObject, ISpaceship
 
     public void Shoot()
     {
-        UFOGun.Shoot();;
+        UFOGun.Shoot();
     }
 
     public void Crash()

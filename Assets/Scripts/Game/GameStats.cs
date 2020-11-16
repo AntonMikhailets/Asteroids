@@ -6,7 +6,7 @@ public class GameStats : MonoBehaviour
 	[SerializeField] private int score = 0;
   [SerializeField] private int health = 3;
   [SerializeField] private int asteroidsDestroyed;
-  [SerializeField] private HealthAndScoreUI healthAndScoreUI;
+  [SerializeField] private HealthAndScoreUI healthAndScoreUI = default;
 
     private void Start()
     {

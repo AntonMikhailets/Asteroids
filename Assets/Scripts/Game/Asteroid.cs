@@ -8,25 +8,27 @@ public class Asteroid : FlyingObject, IAsteroid
 	public int scorePoints;
 	public delegate void SetScorePoints(int points);
   public static event SetScorePoints AsteroidBroke;
+  public delegate void AsteroidStatus(GameObject newAsteroid);
+  public static event AsteroidStatus Created;
+  public static event AsteroidStatus Crashed;
 
-	[SerializeField] private float maxThrust;
-	[SerializeField] private float minThrust;
-	[SerializeField] private float maxTorque;
-	[SerializeField] private float minTorque;
+	[SerializeField] private float maxThrust = 0;
+	[SerializeField] private float maxTorque = 0;
 	[SerializeField] private bool separationAfterBreak;
-	[SerializeField] private GameObject separationAstreroid;
-	[SerializeField] private GameObject DeathParticle;  
+	[SerializeField] private GameObject separationAstreroid = default;
+	[SerializeField] private GameObject DeathParticle = default;  
 
-	private Rigidbody2D rigidbody;
+	private new Rigidbody2D rigidbody;
 
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody2D>();
 		SetBordersAndPrivateObjects();
 		SetDirection();
-
-		GameObject canvas = GameObject.Find("/Canvas");
+		GameObject canvas = GameObject.Find("/Canvas"); //////////////////////////////
 		gameObject.transform.SetParent(canvas.transform);
+
+    Created(gameObject);
 	}
 
 	public void SetDirection()
@@ -54,6 +56,7 @@ public class Asteroid : FlyingObject, IAsteroid
 
    	public void Crash()
    	{
+      Crashed(gameObject);
    		AsteroidBroke(scorePoints);
 
    		if(separationAfterBreak)

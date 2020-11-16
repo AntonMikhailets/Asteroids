@@ -2,7 +2,7 @@
 
 public class SpaceShipGun : MonoBehaviour
 {
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject bullet = default;
     [SerializeField] private float bulletForce;  
 
     public void Fire()

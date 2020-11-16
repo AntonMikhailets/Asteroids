@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class HealthAndScoreUI : MonoBehaviour
 {
-    [SerializeField] private Text scoreText;
-    [SerializeField] private HealthUI HealthUI;
+    [SerializeField] private Text scoreText = default;
+    [SerializeField] private HealthUI HealthUI = default;
     private int _health;
 
     private void Start()

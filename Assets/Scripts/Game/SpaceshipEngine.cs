@@ -8,6 +8,13 @@ public class SpaceshipEngine : FlyingObject
 
 	private float _thrustInput;
 	private float _torqueInput;
+  private Rigidbody2D _rigidbody;
+
+  private void Start()
+  {
+    SetBordersAndPrivateObjects();
+    _rigidbody = gameObject.GetComponent<Rigidbody2D>();
+  }
 
   public override void Update()
   {
@@ -30,16 +37,18 @@ public class SpaceshipEngine : FlyingObject
 
   private void FixedUpdate()
   {
-  		GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * _thrustInput * thrust);
-      GetComponent<Rigidbody2D>().AddTorque(-_torqueInput * torque);
+  		_rigidbody.AddRelativeForce(Vector2.up * _thrustInput * thrust);
+      _rigidbody.AddTorque(-_torqueInput * torque);
   }
 
   #region MonoBehaviour
 
   private void OnValidate()
   {
-      if(thrust < 0) thrust = 0;
-      if(torque < 0) torque = 0;
+      if(thrust < 0) 
+        thrust = 0;
+      if(torque < 0) 
+        torque = 0;
   }
 
   #endregion    

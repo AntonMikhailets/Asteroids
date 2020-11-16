@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteroidShape : MonoBehaviour
 {
-    [SerializeField] private GameObject[] Asteroids;
+    [SerializeField] private GameObject[] Asteroids = default;
 
     public GameObject SetAsteroidParameters()
     {

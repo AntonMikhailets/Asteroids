@@ -22,7 +22,7 @@ public class UFOGun : MonoBehaviour
     		GameObject player = GameObject.FindGameObjectWithTag("Spaceship");
     		GameObject newBullet = Instantiate (bullet, transform.position, transform.rotation);
 
-    		Vector2 scatter = new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
+    		Vector2 scatter = new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
     		Vector2 playerposition = new Vector2(player.transform.position.x, player.transform.position.y);
     		Vector2 position = new Vector2(transform.position.x, transform.position.y);
 

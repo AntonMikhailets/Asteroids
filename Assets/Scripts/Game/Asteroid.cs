@@ -27,7 +27,6 @@ public class Asteroid : FlyingObject, IAsteroid
 		SetDirection();
 		GameObject canvas = GameObject.Find("/Canvas"); //////////////////////////////
 		gameObject.transform.SetParent(canvas.transform);
-
     Created(gameObject);
 	}
 

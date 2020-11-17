@@ -864,7 +864,8 @@ MonoBehaviour:
   - {fileID: 3808796902019762456, guid: abb46e93addf8ce4689905f988871a54, type: 3}
   - {fileID: 3808796902019762456, guid: 9191c16846da0d04aa2192f1e83eb823, type: 3}
   asteroidsValue: 3
-  AsteroidsInScene: []
+  _asteroidsInScene: []
+  UFOSpawner: {fileID: 1091514659}
 --- !u!1 &1492482695
 GameObject:
   m_ObjectHideFlags: 0

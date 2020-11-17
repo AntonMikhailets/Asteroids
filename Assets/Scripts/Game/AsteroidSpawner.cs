@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-	public GameObject GameUI;
-    [SerializeField] private GameObject[] Asteroids  = default;
-    [SerializeField] private int asteroidsValue;
+	[SerializeField] private GameObject GameUI = default;
+    [SerializeField] private GameObject[] Asteroids = default;
+    [SerializeField] private int asteroidsValue = 3;
     [SerializeField] private List<GameObject> _asteroidsInScene = default;
+    [SerializeField] private UFOSpawner UFOSpawner;
 
     private void Start()
     {
-    	SpawnAsteroids(asteroidsValue);
+    	SpawnAsteroids();
         Asteroid.Created += AddAsteroidInList;
-        Asteroid.Crashed += RemoveAsteroidFromList;  
+        Asteroid.Crashed += RemoveAsteroidFromList;
+        //UFO.Created += AddAsteroidInList;
+       // UFO.Crashed += RemoveAsteroidFromList;   
     }
 
-    public void SpawnAsteroids(int quantity)
+    public void SpawnAsteroids()
     {
-    	for(int i = 0; i < quantity; i++)
+    	asteroidsValue++;
+    	for(int i = 0; i < asteroidsValue; i++)
     	{	
     		AsteroidSpawn();
     	}
@@ -48,11 +52,24 @@ public class AsteroidSpawner : MonoBehaviour
 
     private void RemoveAsteroidFromList(GameObject newAsteroid)
     {
-       _asteroidsInScene.Remove(newAsteroid); 
+       _asteroidsInScene.Remove(newAsteroid);
+       Invoke("UFOSpawnCheck", 0.5f);
+       Invoke("RestartCheck", 0.5f);
+    }
 
-       if(_asteroidsInScene.Count == 0)
-       {
-            SpawnAsteroids(++asteroidsValue);
-       }
+    private void UFOSpawnCheck()
+    {
+    	if(_asteroidsInScene.Count == 2)
+        {
+           UFOSpawner.UFOSpawn();
+        } 
+    }
+
+    private void RestartCheck()
+    {
+    	if(_asteroidsInScene.Count == 0)
+        {
+            Invoke("SpawnAsteroids", 2f);
+        }
     }
 }

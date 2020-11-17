@@ -34,10 +34,10 @@ public class UFO : FlyingObject, ISpaceship
     public void Crash()
     {
    		GameObject particle = Instantiate (deathParticle, transform.position, transform.rotation);
-      	particle.gameObject.transform.SetParent(gameObject.transform);
-      	gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-      	gameObject.GetComponent<Image>().enabled = false;
-      	UFOGun.enabled = false;
+      particle.gameObject.transform.SetParent(gameObject.transform);
+      gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+      gameObject.GetComponent<Image>().enabled = false;
+      UFOGun.enabled = false;
    		Destroy(gameObject, 0.5f);
     }
 
